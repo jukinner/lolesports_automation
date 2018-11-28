@@ -1,17 +1,16 @@
 require 'selenium-webdriver'
+require 'rubygems'
 
 class Baseclass
 
 def initialize
     options = Selenium::WebDriver::Chrome::Options.new
     # options.add_argument('start-fullscreen')
-    # options.add_argument("--use-fake-ui-for-media-stream")
-    # options.add_argument("--allow-running-insecure-content")
     @driver=Selenium::WebDriver.for :chrome, options: options 
   end
 
   def setup(url)
-    @driver.manage.window.maximize
+    # @driver.manage.window.maximize
     @driver.navigate.to url 
   end
 
@@ -32,9 +31,15 @@ def initialize
     end
   end
 
+  def find_element(what)
+    self.find_element(what)
+  end
+
+  def get_title()
+    @driver.title
+  end
+
   def close_browser()
     @driver.quit
   end
-
-  # NAV BAR COMMANDS
 end
